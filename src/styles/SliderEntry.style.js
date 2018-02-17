@@ -1,8 +1,10 @@
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { colors } from './index.style';
 
-const IS_IOS = Platform.OS === 'ios';
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
+const { 
+    width: viewportWidth, 
+    height: viewportHeight
+} = Dimensions.get('window');
 
 function wp (percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -40,7 +42,7 @@ export default StyleSheet.create({
     },
     imageContainer: {
         flex: 1,
-        marginBottom: IS_IOS ? 0 : -1, // Prevent a random Android rendering issue
+        marginBottom: -1, // Prevent a random Android rendering issue
         backgroundColor: 'white',
         borderTopLeftRadius: entryBorderRadius,
         borderTopRightRadius: entryBorderRadius
@@ -51,7 +53,7 @@ export default StyleSheet.create({
     image: {
         ...StyleSheet.absoluteFillObject,
         resizeMode: 'cover',
-        borderRadius: IS_IOS ? entryBorderRadius : 0,
+        borderRadius: 0,
         borderTopLeftRadius: entryBorderRadius,
         borderTopRightRadius: entryBorderRadius
     },

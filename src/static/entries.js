@@ -1,13 +1,13 @@
-export const ENTRIES1 = [
+export const IMAGES = [
     {
         title: 'Beautiful and dramatic Antelope Canyon',
         subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-        illustration: 'https://i.imgur.com/UYiroysl.jpg'
+        illustration: 'https://i.imgur.com/P5JXkg7.jpg'
     },
     {
         title: 'Earlier this morning, NYC',
         subtitle: 'Lorem ipsum dolor sit amet',
-        illustration: 'https://i.imgur.com/UPrs1EWl.jpg'
+        illustration: 'https://i.imgur.com/z8xDw22.jpg'
     },
     {
         title: 'White Pocket Sunset',
@@ -28,10 +28,7 @@ export const ENTRIES1 = [
         title: 'Middle Earth, Germany',
         subtitle: 'Lorem ipsum dolor sit amet',
         illustration: 'https://i.imgur.com/lceHsT6l.jpg'
-    }
-];
-
-export const ENTRIES2 = [
+    },
     {
         title: 'Favourites landscapes 1',
         subtitle: 'Lorem ipsum dolor sit amet',

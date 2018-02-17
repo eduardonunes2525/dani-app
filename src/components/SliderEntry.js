@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { ParallaxImage } from 'react-native-snap-carousel';
+import React, { Component } from 'react';
 import styles from '../styles/SliderEntry.style';
+import { ParallaxImage } from 'react-native-snap-carousel';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 export default class SliderEntry extends Component {
 
@@ -14,7 +14,12 @@ export default class SliderEntry extends Component {
     };
 
     get image () {
-        const { data: { illustration }, parallax, parallaxProps, even } = this.props;
+        const { 
+            data: { illustration },
+            parallax,
+            parallaxProps,
+            even
+        } = this.props;
 
         return parallax ? (
             <ParallaxImage
@@ -34,8 +39,34 @@ export default class SliderEntry extends Component {
         );
     }
 
+    getImageView(even){
+        return (
+            <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
+                { this.image }
+                <View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]} />
+            </View>
+        );
+    }
+
+    getTitlesView(even, uppercaseTitle, subtitle){
+        return (
+            <View style={[styles.textContainer, even ? styles.textContainerEven : {}]}>
+                { uppercaseTitle }
+                <Text
+                    style={[styles.subtitle, even ? styles.subtitleEven : {}]}
+                    numberOfLines={2}
+                >
+                    { subtitle }
+                </Text>
+            </View>
+        );
+    }
+
     render () {
-        const { data: { title, subtitle }, even } = this.props;
+        const {
+            data: { title, subtitle },
+            even
+        } = this.props;
 
         const uppercaseTitle = title ? (
             <Text
@@ -46,27 +77,16 @@ export default class SliderEntry extends Component {
             </Text>
         ) : false;
 
+        const imageView = this.getImageView(even);
+        const titlesView = this.getTitlesView(even, uppercaseTitle, subtitle);
+
         return (
-            <TouchableOpacity
-              activeOpacity={1}
+            <View
               style={styles.slideInnerContainer}
-              onPress={() => { alert(`You've clicked '${title}'`); }}
               >
-                <View style={styles.shadow} />
-                <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
-                    { this.image }
-                    <View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]} />
-                </View>
-                <View style={[styles.textContainer, even ? styles.textContainerEven : {}]}>
-                    { uppercaseTitle }
-                    <Text
-                      style={[styles.subtitle, even ? styles.subtitleEven : {}]}
-                      numberOfLines={2}
-                    >
-                        { subtitle }
-                    </Text>
-                </View>
-            </TouchableOpacity>
+                { imageView }
+                { titlesView }
+            </View>
         );
     }
 }

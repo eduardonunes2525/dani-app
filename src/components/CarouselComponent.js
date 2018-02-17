@@ -1,10 +1,21 @@
 import React from 'react';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
-import { ENTRIES1 } from '../static/entries';
+import { 
+    Platform,
+    View,
+    ScrollView,
+    Text,
+    StatusBar,
+    SafeAreaView 
+} from 'react-native';
+
+//Import Images
+import { IMAGES } from '../static/entries';
+
+//Import Styles CSS
 import { sliderWidth, itemWidth } from '../styles/SliderEntry.style';
 import styles from '../styles/SliderEntry.style';
-import { Platform, View, ScrollView, Text, StatusBar, SafeAreaView } from 'react-native';
 
 
 export default class SlideComponent extends React.Component {
@@ -12,17 +23,17 @@ export default class SlideComponent extends React.Component {
         return <SliderEntry data={item} even={(index + 1) % 2 === 0} />;
     }
 
-    layoutExample (type) {
+    getCarousel (typeOfCarrousel) {
         return (
             <View style={[styles.exampleContainer, styles.exampleContainerLight]}>
                 <Carousel
-                  data={ENTRIES1}
+                  data={IMAGES}
                   renderItem={this._renderItem}
                   sliderWidth={sliderWidth}
                   itemWidth={itemWidth}
                   containerCustomStyle={styles.slider}
                   contentContainerCustomStyle={styles.sliderContentContainer}
-                  layout={'default'}
+                  layout={typeOfCarrousel}
                   loop={true}
                 />
             </View>
@@ -30,22 +41,17 @@ export default class SlideComponent extends React.Component {
     }
 
     render() {
-        const example3 = this.layoutExample('stack');
-        
+        const carousel = this.getCarousel('default');
         return (
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.container}>
-                    <StatusBar
-                        translucent={true}
-                        backgroundColor={'rgba(0, 0, 0, 0.3)'}
-                        barStyle={'light-content'}
-                    />
+                    <StatusBar hidden={true}/>
                     <ScrollView
                         style={styles.scrollview}
                         scrollEventThrottle={200}
                         directionalLockEnabled={true}
                     >
-                        { example3 }
+                        { carousel }
                     </ScrollView>
                 </View>
             </SafeAreaView>
