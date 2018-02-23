@@ -28,6 +28,13 @@ export default StyleSheet.create({
         paddingTop: 50,
         paddingBottom: 50 // needed for shadow
     },
+    slideInnerContainerShortImages: {
+        width: itemWidth,
+        height: viewportHeight * 0.65,
+        paddingHorizontal: itemHorizontalMargin,
+        paddingTop: 50,
+        paddingBottom: 50 // needed for shadow
+    },
     shadow: {
         position: 'absolute',
         top: 0,
@@ -55,7 +62,8 @@ export default StyleSheet.create({
         resizeMode: 'cover',
         borderRadius: 0,
         borderTopLeftRadius: entryBorderRadius,
-        borderTopRightRadius: entryBorderRadius
+        borderTopRightRadius: entryBorderRadius,
+        alignSelf: 'center',
     },
     // image's border radius is buggy on iOS; let's hack it!
     radiusMask: {

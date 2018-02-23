@@ -82,7 +82,7 @@ export default class SliderEntry extends Component {
 
         return (
             <View
-              style={styles.slideInnerContainer}
+              style={ even ? styles.slideInnerContainer : styles.slideInnerContainerShortImages}
               >
                 { imageView }
                 { titlesView }

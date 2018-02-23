@@ -34,7 +34,7 @@ export default class SlideComponent extends React.Component {
                   containerCustomStyle={styles.slider}
                   contentContainerCustomStyle={styles.sliderContentContainer}
                   layout={typeOfCarrousel}
-                  loop={true}
+                  loop={false}
                 />
             </View>
         );
